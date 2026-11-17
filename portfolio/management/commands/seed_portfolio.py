@@ -131,7 +131,9 @@ class Command(BaseCommand):
                     kind=Education.Kind.CERTIFICATE,
                     date=date(2024, 9, 1),
                     status="In progress as of Sep 2024 · Completion unconfirmed",
-                    description="Training in threat detection, risk management and network security.",
+                    description=(
+                        "Training in threat detection, risk management and network security."
+                    ),
                 ),
                 Education(
                     title="Bachelor’s, Foreign Languages and Literatures",
