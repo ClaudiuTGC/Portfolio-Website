@@ -1,0 +1,48 @@
+{% load static %}
+<!doctype html>
+<html lang="en" id="top">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c1020">
+  <title>{% block title %}{{ name }}{% if profile.headline %} | {{ profile.headline }}{% endif %}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ profile.intro|default:'Personal portfolio' }}{% endblock %}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{% block og_title %}{{ name }}{% if profile.headline %} | {{ profile.headline }}{% endif %}{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}{{ profile.intro|default:'Personal portfolio' }}{% endblock %}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:image" content="{{ site_url }}{% static 'portfolio/social.png' %}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Claudiu Tananau, Senior Security Analyst">
+  <link rel="icon" type="image/png" href="{% static 'portfolio/favicon.png' %}">
+  <link rel="stylesheet" href="{% static 'portfolio/site.css' %}">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="{% url 'home' %}" aria-label="{{ name }} home">
+        <span class="monogram" aria-hidden="true">{{ monogram }}</span>
+        <span class="brand-name">{{ name }}</span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        {% if profile.bio %}<a href="{% url 'home' %}#about">About</a>{% endif %}
+        <a href="{% url 'home' %}#experience">Experience</a>
+        <a href="{% url 'home' %}#work">Work</a>
+        <a href="{% url 'home' %}#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    {% block main %}{% endblock %}
+  </main>
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>© {% now "Y" %} {{ name }}</span>
+      <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+</body>
+</html>
