@@ -135,8 +135,33 @@
 
 <section class="section contact" id="contact" aria-labelledby="contact-title">
   <div class="wrap section-grid">
-    <h2 id="contact-title">Contact</h2>
-    {% if profile.linkedin_url %}<p><a href="{{ profile.linkedin_url }}">Find me on LinkedIn <span aria-hidden="true">↗</span></a></p>{% endif %}
+    <div>
+      <h2 id="contact-title">Contact</h2>
+      <p class="contact-copy">
+        Send me a message{% if profile.linkedin_url %} or find me on <a href="{{ profile.linkedin_url }}">LinkedIn</a>{% endif %}.
+      </p>
+    </div>
+    <form class="contact-form" action="{% url 'contact' %}#contact" method="post">
+      {% csrf_token %}
+      {% for message in messages %}<p class="form-status" role="status">{{ message }}</p>{% endfor %}
+      {% if form.errors %}
+        <div class="form-errors" role="alert">
+          {% if form.non_field_errors %}{{ form.non_field_errors }}{% else %}<p>Check the highlighted fields and try again.</p>{% endif %}
+        </div>
+      {% endif %}
+      {% for field in form %}
+        {% if field.name == "website" %}
+          <div hidden>{{ field.label_tag }}{{ field }}</div>
+        {% else %}
+          <div class="field">
+            {{ field.label_tag }}
+            {{ field }}
+            {{ field.errors }}
+          </div>
+        {% endif %}
+      {% endfor %}
+      <button class="button" type="submit">Send message <span aria-hidden="true">↗</span></button>
+    </form>
   </div>
 </section>
 {% endblock %}

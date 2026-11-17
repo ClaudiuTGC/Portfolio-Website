@@ -242,3 +242,5 @@ button, input, textarea { font: inherit; }
 .credential p + p { margin-top: 0.28rem; }
 .credential time { display: block; }
 .detail .project .meta { margin: 0; }
+
+.form-errors { color: var(--error); }
