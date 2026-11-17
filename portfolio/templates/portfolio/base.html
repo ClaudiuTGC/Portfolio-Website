@@ -23,7 +23,7 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="brand" href="{% url 'home' %}" aria-label="{{ name }} home">
+      <a class="brand" href="{% url 'home' %}" aria-label="{{ monogram }} {{ name }} home">
         <span class="monogram" aria-hidden="true">{{ monogram }}</span>
         <span class="brand-name">{{ name }}</span>
       </a>
@@ -41,7 +41,7 @@
   <footer class="site-footer">
     <div class="wrap footer-inner">
       <span>© {% now "Y" %} {{ name }}</span>
-      <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
+      <a href="#top">Back to top</a>
     </div>
   </footer>
 </body>

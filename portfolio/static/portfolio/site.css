@@ -242,3 +242,25 @@ button, input, textarea { font: inherit; }
 .credential p + p { margin-top: 0.28rem; }
 .credential time { display: block; }
 .detail .project .meta { margin: 0; }
+
+.form-errors { color: var(--error); }
+
+.arrow-out {
+  display: inline-block;
+  position: relative;
+  width: 0.48em;
+  height: 0.48em;
+  border-top: 1px solid;
+  border-right: 1px solid;
+  vertical-align: 0.12em;
+}
+.arrow-out::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 0.62em;
+  border-top: 1px solid;
+  transform: rotate(-45deg);
+  transform-origin: right;
+}

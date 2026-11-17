@@ -14,9 +14,9 @@ SECRET_KEY = (
 )
 ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["localhost", "127.0.0.1", "[::1]"])
 CSRF_TRUSTED_ORIGINS = env.list("DJANGO_CSRF_TRUSTED_ORIGINS", default=[])
-SITE_URL = (
-    env("SITE_URL", default="http://localhost:8000") if DEBUG else env("SITE_URL")
-).rstrip("/")
+SITE_URL = (env("SITE_URL", default="http://localhost:8000") if DEBUG else env("SITE_URL")).rstrip(
+    "/"
+)
 
 INSTALLED_APPS = [
     "django.contrib.admin",

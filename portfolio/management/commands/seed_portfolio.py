@@ -44,8 +44,7 @@ class Command(BaseCommand):
     @transaction.atomic
     def handle(self, *args, **options):
         if any(
-            model.objects.exists()
-            for model in (SiteProfile, Experience, Project, Skill, Education)
+            model.objects.exists() for model in (SiteProfile, Experience, Project, Skill, Education)
         ):
             self.stdout.write("Portfolio content already exists. No changes made.")
             return
